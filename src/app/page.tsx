@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, LayoutDashboard } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/redux/redux.hooks";
+import { ModeToggle } from "@/components/ui/darkmode";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -58,16 +59,21 @@ export default function Home() {
           <Link href="/" className="font-bold text-xl sm:text-2xl">
             TaskTrek
           </Link>
+
           <div className="flex gap-2 sm:gap-4">
             {isLoggedIn ? (
-              <Link href="/dashboard">
-                <Button className="flex items-center gap-2">
-                  <LayoutDashboard className="h-4 w-4" />
-                  <span className="hidden sm:inline">Dashboard</span>
-                </Button>
-              </Link>
+              <>
+                <ModeToggle />
+                <Link href="/dashboard">
+                  <Button className="flex items-center gap-2">
+                    <LayoutDashboard className="h-4 w-4" />
+                    <span className="hidden sm:inline">Dashboard</span>
+                  </Button>
+                </Link>
+              </>
             ) : (
               <>
+                <ModeToggle />
                 <Link href="/login">
                   <Button variant="ghost" className="text-sm sm:text-base">
                     Login
