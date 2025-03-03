@@ -25,8 +25,9 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import withAuth from "@/HOCs/with.auth";
 
-const Page = () => {
+const Dashboard = () => {
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.user.name);
   const [filterStatus, setFilterStatus] = useState<string | null>(null);
@@ -141,15 +142,15 @@ const Page = () => {
                   <span>Medium</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  onClick={() => handleFilterPriority("high")}
+                  onClick={() => handleFilterPriority("urgent")}
                   className={
-                    filterPriority === "high"
+                    filterPriority === "urgent"
                       ? "bg-red-100 text-red-700 font-medium"
                       : ""
                   }
                 >
                   <span className="mr-2 h-4 w-4 text-red-500">●</span>
-                  <span>High</span>
+                  <span>Urgent</span>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
 
@@ -351,7 +352,7 @@ const Page = () => {
                     <span>Medium</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem
-                    onClick={() => handleFilterPriority("high")}
+                    onClick={() => handleFilterPriority("urgent")}
                     className={
                       filterPriority === "high"
                         ? "bg-red-100 text-red-700 font-medium"
@@ -449,4 +450,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default withAuth(Dashboard);

@@ -1,6 +1,6 @@
-import Sheet from "@/components/dashboard/ToggleSheet";
 import Sidebar from "@/components/dashboard/Sidebar";
 import React from "react";
+import withAuth from "@/HOCs/with.auth";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (

@@ -8,8 +8,8 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Workflow",
-  description: "A simple workflow management app",
+  title: "TaskTrek",
+  description: "A simple Task management app",
 };
 
 export default function RootLayout({

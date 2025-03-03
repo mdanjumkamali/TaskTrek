@@ -64,10 +64,14 @@ const InputField: React.FC<InputFieldProps> = ({ task }) => {
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       if (task?._id) {
-        await dispatch(updateTaskThunk({ ...data, _id: task._id })).unwrap();
+        await dispatch(
+          updateTaskThunk({ ...data, _id: task._id, createdAt: task.createdAt })
+        ).unwrap();
         toast.success("Task updated successfully!");
       } else {
-        await dispatch(createTaskThunk(data)).unwrap();
+        await dispatch(
+          createTaskThunk({ ...data, createdAt: new Date() })
+        ).unwrap();
         toast.success("Task created successfully!");
       }
       dispatch(closeSheet());

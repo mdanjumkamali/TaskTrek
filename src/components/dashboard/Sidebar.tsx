@@ -15,7 +15,7 @@ import {
 
 import { useAppDispatch, useAppSelector } from "@/redux/redux.hooks";
 import { openSheet } from "@/redux/slice/toggle.slice";
-import { logout } from "@/redux/slice/auth.slice";
+import { logoutThunk } from "@/redux/thunk/auth.thunk";
 import { TaskStatus, updateTaskStatus } from "@/redux/slice/taskStatus.slice";
 import { ModeToggle } from "../ui/darkmode";
 import { Button } from "../ui/button";
@@ -53,7 +53,7 @@ const Sidebar = () => {
   };
 
   const logOut = () => {
-    dispatch(logout());
+    dispatch(logoutThunk());
     window.location.replace("/login");
   };
 
