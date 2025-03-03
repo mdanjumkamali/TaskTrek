@@ -22,8 +22,7 @@ const Sheet = () => {
     <ExternalSheet open={isToggled} onOpenChange={handleClose}>
       <SheetContent
         side="right"
-        className="w-[1200px]"
-        style={{ maxWidth: "50vw" }}
+        className="w-full max-w-[90vw] md:max-w-[50vw] md:w-[1200px]"
       >
         <div className="flex flex-col">
           {/* icon */}
