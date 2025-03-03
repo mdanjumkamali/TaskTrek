@@ -2,23 +2,20 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   ArrowDownToLine,
-  BellDot,
   ChartLine,
-  ChevronsRight,
   CirclePlus,
   House,
-  Loader,
   Settings,
   SquareKanban,
   Users,
 } from "lucide-react";
 
 import { useAppDispatch, useAppSelector } from "@/redux/redux.hooks";
+import { TaskStatus, updateTaskStatus } from "@/redux/slice/taskStatus.slice";
 import { openSheet } from "@/redux/slice/toggle.slice";
 import { logoutThunk } from "@/redux/thunk/auth.thunk";
-import { TaskStatus, updateTaskStatus } from "@/redux/slice/taskStatus.slice";
-import { ModeToggle } from "../ui/darkmode";
 import { Button } from "../ui/button";
+import { ModeToggle } from "../ui/darkmode";
 
 const link = [
   {
@@ -72,17 +69,11 @@ const Sidebar = () => {
         {/* icon */}
         <div className="flex items-center justify-between my-6">
           <div className="flex items-center gap-2">
-            {/* <BellDot />
-            <Loader />
-            <ChevronsRight /> */}
             <ModeToggle />
           </div>
-          <button
-            className="bg-secondary px-3 py-2 rounded-md text-muted-foreground hover:bg-secondary/80"
-            onClick={logOut}
-          >
+          <Button variant="destructive" onClick={logOut}>
             Logout
-          </button>
+          </Button>
         </div>
 
         {/* link */}

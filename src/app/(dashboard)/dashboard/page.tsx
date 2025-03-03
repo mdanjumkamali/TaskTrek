@@ -26,6 +26,8 @@ import {
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import withAuth from "@/HOCs/with.auth";
+import { ModeToggle } from "@/components/ui/darkmode";
+import { logoutThunk } from "@/redux/thunk/auth.thunk";
 
 const Dashboard = () => {
   const dispatch = useAppDispatch();
@@ -63,6 +65,11 @@ const Dashboard = () => {
     setSortOrder(null);
   };
 
+  const handleLogout = () => {
+    dispatch(logoutThunk());
+    window.location.replace("/login");
+  };
+
   return (
     <div className="flex flex-col px-2 sm:px-4 py-4 sm:py-6 h-screen bg-[#F7F7F7]">
       {/* greeting */}
@@ -74,6 +81,12 @@ const Dashboard = () => {
           <p className="text-sm sm:text-base text-[#797979]">
             Let&apos;s organize your tasks!
           </p>
+        </div>
+        <div className="flex items-center gap-5 md:hidden mt-2">
+          <ModeToggle />
+          <Button variant="destructive" onClick={handleLogout}>
+            Logout
+          </Button>
         </div>
       </div>
 
@@ -87,7 +100,7 @@ const Dashboard = () => {
                 <span className="font-medium dark:text-black">
                   Filters & Sort
                 </span>
-                <Filter className="h-4 w-4" />
+                <Filter className="h-4 w-4 dark:text-black" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-[calc(100vw-32px)]">
