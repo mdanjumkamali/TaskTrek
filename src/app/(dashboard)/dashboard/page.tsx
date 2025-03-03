@@ -84,7 +84,9 @@ const Dashboard = () => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="w-full flex items-center justify-between p-2 bg-white rounded-md shadow-sm">
-                <span className="font-medium">Filters & Sort</span>
+                <span className="font-medium dark:text-black">
+                  Filters & Sort
+                </span>
                 <Filter className="h-4 w-4" />
               </button>
             </DropdownMenuTrigger>
